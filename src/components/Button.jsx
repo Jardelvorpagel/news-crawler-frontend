@@ -47,7 +47,10 @@ const Btn = styled.button`
 export default function Button(props) {
     function returnData(site) {
         props.loader('block');
-        axios.get(`http://localhost:3003/api/${site}`)
+
+        let path = window.location.host == 'localhost' ? 'http://localhost:3003/' : 'https://newscrawler-backend.herokuapp.com/';
+
+        axios.get(`api/${site}`)
             .then(res => {
                 return res.data;
             })
