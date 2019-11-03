@@ -48,9 +48,9 @@ export default function Button(props) {
     function returnData(site) {
         props.loader('block');
 
-        let path = window.location.host == 'localhost' ? 'http://localhost:3003/' : 'https://newscrawler-backend.herokuapp.com/';
+        let path = window.location.host === 'localhost' ? 'http://localhost:3003/' : 'https://newscrawler-backend.herokuapp.com/';
 
-        axios.get(`api/${site}`)
+        axios.get(`${path}api/${site}`)
             .then(res => {
                 return res.data;
             })
