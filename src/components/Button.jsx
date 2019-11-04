@@ -46,6 +46,12 @@ const Btn = styled.button`
 
 export default function Button(props) {
     function returnData(site) {
+        let btns = document.querySelectorAll('.sites button');
+
+        btns.forEach(e => {
+            e.setAttribute('disabled');
+        })
+
         props.loader('block');
 
         let path = window.location.host === 'localhost' ? 'http://localhost:3003/' : 'https://newscrawler-backend.herokuapp.com/';
@@ -57,6 +63,10 @@ export default function Button(props) {
             .then(data => {
                 props.click(data);
                 props.loader('none');
+
+                btns.forEach(e => {
+                    e.removeAttribute('disabled');
+                })
             })
             .catch(error => {
                 console.log(error);
