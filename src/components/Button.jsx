@@ -45,16 +45,16 @@ const Btn = styled.button`
 `;
 
 export default function Button(props) {
+
     function returnData(site) {
-        let btns = document.querySelectorAll('.sites button');
-
-        btns.forEach(e => {
-            e.setAttribute('disabled');
-        })
-
         props.loader('block');
 
-        let path = window.location.host === 'localhost' ? 'http://localhost:3003/' : 'https://newscrawler-backend.herokuapp.com/';
+        let btns = document.querySelectorAll('.sites button');
+        btns.forEach(e => {
+            e.setAttribute('style', 'pointer-events: none;');
+        });
+
+        let path = window.location.host === 'localhost:3000' ? 'http://localhost:3003/' : 'https://newscrawler-backend.herokuapp.com/';
 
         axios.get(`${path}api/${site}`)
             .then(res => {
@@ -65,8 +65,8 @@ export default function Button(props) {
                 props.loader('none');
 
                 btns.forEach(e => {
-                    e.removeAttribute('disabled');
-                })
+                    e.removeAttribute('style');
+                });
             })
             .catch(error => {
                 console.log(error);
