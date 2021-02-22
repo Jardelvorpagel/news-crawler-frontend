@@ -6,7 +6,7 @@
     "@lottiefiles/lottie-player": "^0.2.1",
     "@material-ui/core": "^4.5.1",
     "axios": "0.18.0",
-    "bootstrap": "4.1.1",
+    "bootstrap": "4.3.1",
     "clipboard": "^2.0.4",
     "font-awesome": "4.7.0",
     "lottie-react-web": "^2.1.4",
